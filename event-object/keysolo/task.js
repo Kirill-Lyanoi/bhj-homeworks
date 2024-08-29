@@ -17,21 +17,14 @@ class Game {
   }
 
   registerEvents() {
-    let i = 0;
-      window.addEventListener('keyup', (event) => {
-        this.symbols = document.querySelectorAll('.symbol');
-        this.currentSymbol = this.symbols[i];
-        if (i < (this.symbols.length - 1)) {
-        i++;
+    window.addEventListener('keyup', (event) => {
+      this.symbols = document.querySelectorAll('.symbol');
+      if (event.key.toUpperCase() === this.currentSymbol.textContent.toUpperCase()) {
+        this.success()
       } else {
-          i = 0
-        }
-        if (event.key.toUpperCase() === this.currentSymbol.textContent.toUpperCase()) {
-          this.success()
-        } else {
-          this.fail()
-       }
-      }) 
+        this.fail()
+      }
+    }) 
   }
 
   success() {
